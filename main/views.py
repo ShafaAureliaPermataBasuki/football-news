@@ -5,13 +5,13 @@ from main.forms import NewsForm
 from main.models import News
 
 def show_main(request):
-    new_list = News.objects.all()
+    news_list = News.objects.all()
 
     context = {
         'Name' : "Shafa Aurelia Permata Basuki",
         'NPM' : "2406432236",
         'Class' : "PBP C",
-        'new_list' : new_list
+        'news_list' : news_list
     }
     return render(request, "main.html", context)
 
