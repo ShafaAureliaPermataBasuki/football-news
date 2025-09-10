@@ -10,7 +10,7 @@ def show_main(request):
     context = {
         'npm': '2406432236',
         'name': 'Shafa Aurelia Permata Basuki',
-        'class': 'C',
+        'class': 'PBP C',
         'news_list': news_list
     }
 
