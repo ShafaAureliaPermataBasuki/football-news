@@ -5,15 +5,19 @@ from main.forms import NewsForm
 from main.models import News
 
 def show_main(request):
-    news_list = News.objects.all()
-
+    try:
+        # Force query execution di view, bukan di template
+        news_list = list(News.objects.all())  # Konversi ke list
+    except Exception as e:
+        # Fallback jika database error
+        news_list = []
+        # Log error untuk debugging
+        print(f"Database connection failed: {e}")
+    
     context = {
-        'npm': '2406432236',
-        'name': 'Shafa Aurelia Permata Basuki',
-        'class': 'PBP C',
-        'news_list': news_list
+        'news_list': news_list,
+        'user': request.user,
     }
-
     return render(request, "main.html", context)
 
 def show_xml(request):
